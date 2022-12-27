@@ -1,11 +1,15 @@
 import { wordsList } from 'random-words';
 import React, { createRef, useEffect, useRef, useState } from 'react'
+import { useTestMode } from '../Context/TestModeContext';
 import Stats from './Stats';
+import UpperMenu from './UpperMenu';
 
 const TypingBox = ({words}) => {
 
     // in react you get a hook , useRef()
     // react also provides a function, createRef() 
+
+    const {testSeconds} = useTestMode();
 
     const [currCharIndex, setCurrCharIndex] = useState(0);
     const [currWordIndex, setCurrWordIndex] = useState(0);
@@ -173,12 +177,15 @@ const TypingBox = ({words}) => {
         wordSpanRef[0].current.childNodes[0].className = 'char current';
     },[]);
 
-
+    useEffect(()=>{
+        setCountDown(testSeconds);
+        setTestTime(testSeconds);
+    },[testSeconds])
 
   return (
     <div>
           
-              {countDown}
+              <UpperMenu countDown={countDown}/>
               {(testEnd) ? (<Stats 
                                 wpm={calculateWPM()} 
                                 accuracy={calculateAccuracy()} 

@@ -103,6 +103,7 @@ select{
     color:red;
 }
 
+
 .stats-box{
     display: flex;
     max-width: 1000px;
@@ -133,6 +134,26 @@ select{
 a{
     text-decoration: none;
     color: inherit;
+}
+
+.upper-menu{
+    display:flex;
+    width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content:space-between;
+    font-size:1.35rem;
+    padding:0.5rem;
+}
+.time-modes{
+    display:flex;
+}
+.time{
+    margin-right:5px;
+}
+.time:hover{
+    color:${({theme})=>theme.typeBoxText};
+    cursor: pointer;
 }
 
 `;
