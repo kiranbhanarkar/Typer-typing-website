@@ -13,6 +13,7 @@ body{
     padding:0;
     margin:0;
     transition: all 0.25s linear;
+    overflow-y: scroll;
 }
 
 .canvas{
@@ -154,6 +155,15 @@ a{
 .time:hover{
     color:${({theme})=>theme.typeBoxText};
     cursor: pointer;
+}
+
+.header{
+    display:flex;
+    width:1000px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    align-self: stretch;
 }
 
 `;
