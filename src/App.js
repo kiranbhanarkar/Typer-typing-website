@@ -1,33 +1,22 @@
-import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import TypingBox from "./Components/TypingBox";
+import AlertComponent from "./Components/AlertComponent";
 import { useTheme } from "./Context/ThemeContext";
+import HomePage from "./Pages/HomePage";
+import UserPage from "./Pages/UserPage";
 import { GlobalStyles } from "./Styles/global";
 
-var randomWords =  require('random-words');
-
 function App() {
-
   const {theme} = useTheme();
-  const words = randomWords(100);
-console.log(process.env)
-  // useEffect(()=>{
-  //   console.log("theme in app", theme);
-  // },[theme]);
-
   return (
-
-    <ThemeProvider theme={theme}>
-      <div className="canvas">
-        <GlobalStyles/>
-        <Header />
-        <TypingBox words={words}/>
-        <Footer/>
-      </div>
-    </ThemeProvider>
-    
+   <ThemeProvider theme={theme}>
+    <GlobalStyles/>
+    <AlertComponent />
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/user" element={<UserPage />} />
+      </Routes>
+  </ThemeProvider>
   );
 }
 
